@@ -1,7 +1,10 @@
+require("express-async-errors");
+
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./db/dbConnection";
 import router from "./routers";
+import errorHandlerMiddleware from "./middlewares/errrorHandler";
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -21,6 +24,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api", router);
+
+app.use(errorHandlerMiddleware);
 
 app.listen(port, () => {
   console.log(`Server ${port} portunda çalışıyor...`);

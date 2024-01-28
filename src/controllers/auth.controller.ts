@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import user from "../models/user.model";
 import bcrypt from "bcrypt";
+import APIError from "../utils/APIError";
 
 export default class AuthController {
   static async login(req: Request, res: Response) {
@@ -13,8 +14,7 @@ export default class AuthController {
     const userCheck = await user.findOne({ email: req.body.email });
 
     if (userCheck) {
-      console.log("Girilen email kullanımda!");
-      return res.send({ status: false });
+      throw new APIError("Girilen email kullanımda!", 401);
     }
 
     req.body.password = await bcrypt.hash(req.body.password, 10);
