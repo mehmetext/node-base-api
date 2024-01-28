@@ -3,6 +3,7 @@ import user from "../models/user.model";
 import bcrypt from "bcrypt";
 import APIError from "../utils/APIError";
 import CResponse from "../utils/CResponse";
+import { createToken } from "../middlewares/auth";
 
 export default class AuthController {
   static async login(req: Request, res: Response) {
@@ -20,7 +21,7 @@ export default class AuthController {
       throw new APIError("Email veya şifre yanlış!", 401);
     }
 
-    return CResponse.success({ res, data: foundUser });
+    return createToken(foundUser!, res);
   }
 
   static async register(req: Request, res: Response) {
