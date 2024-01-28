@@ -1,10 +1,13 @@
 import express from "express";
 import dotenv from "dotenv";
+import connectDB from "./db/dbConnection";
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 const app = express();
 const port = process.env.PORT || 5002;
+
+connectDB();
 
 app.get("/", (req, res) => {
   res.json({ mesaj: "ana sayfa" });
