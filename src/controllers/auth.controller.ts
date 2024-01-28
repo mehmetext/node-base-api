@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import user from "../models/user.model";
 import bcrypt from "bcrypt";
 import APIError from "../utils/APIError";
+import CResponse from "../utils/CResponse";
 
 export default class AuthController {
   static async login(req: Request, res: Response) {
@@ -20,12 +21,16 @@ export default class AuthController {
     req.body.password = await bcrypt.hash(req.body.password, 10);
 
     const creatingUser = new user(req.body);
-    const response = await creatingUser.save();
+    const createdUserData = await creatingUser.save();
 
-    res.json({
-      status: true,
-      data: response,
-      message: "Kayıt başarıyla eklendi.",
+    if (!createdUserData) {
+      throw new APIError("Kullanıcı kayıt edilemedi!", 400);
+    }
+
+    return CResponse.created({
+      res,
+      data: createdUserData,
+      message: "Kayıt oluşturuldu.",
     });
   }
 }
