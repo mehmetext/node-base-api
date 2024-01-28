@@ -6,9 +6,21 @@ import CResponse from "../utils/CResponse";
 
 export default class AuthController {
   static async login(req: Request, res: Response) {
-    console.log(req.body);
+    const { email, password } = req.body;
 
-    res.json({ neler: "oldu" });
+    const foundUser = await user.findOne({ email });
+
+    if (!foundUser) {
+      throw new APIError("Email veya şifre yanlış!", 401);
+    }
+
+    const comparePassword = await bcrypt.compare(password, foundUser.password);
+
+    if (!comparePassword) {
+      throw new APIError("Email veya şifre yanlış!", 401);
+    }
+
+    return CResponse.success({ res, data: foundUser });
   }
 
   static async register(req: Request, res: Response) {

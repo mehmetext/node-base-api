@@ -3,7 +3,7 @@ import { Response } from "express";
 interface ICResponse {
   res: Response;
   data: any;
-  message: string | null;
+  message?: string | null;
   status?: number;
 }
 
@@ -36,6 +36,10 @@ export default class CResponse {
   
   */
   static error({ res, data, message, status }: ICResponse) {
+    if (!message) {
+      if (status === 401) message = "Unauthorized";
+    }
+
     return res.status(status!).send({
       success: false,
       data,
