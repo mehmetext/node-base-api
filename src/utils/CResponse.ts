@@ -2,7 +2,7 @@ import { Response } from "express";
 
 interface ICResponse {
   res: Response;
-  data: any;
+  data?: any;
   message?: string | null;
   status?: number;
 }
