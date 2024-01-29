@@ -8,6 +8,7 @@ import errorHandlerMiddleware from "./middlewares/errrorHandler";
 
 import cors from "cors";
 import corsOptions from "./utils/corsOptions";
+import rateLimit from "./middlewares/rateLimit";
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -21,8 +22,8 @@ app.use(express.json({ limit: "50mb" }));
 app.use(
   express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 })
 );
-
 app.use(cors(corsOptions));
+app.use("/api", rateLimit);
 
 app.use("/api", router);
 
