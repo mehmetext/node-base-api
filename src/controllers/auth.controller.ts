@@ -48,8 +48,6 @@ export default class AuthController {
   }
 
   static async me(req: Request, res: Response) {
-    console.log(req.body);
-
     return CResponse.success({
       res,
       data: req.body.user,
