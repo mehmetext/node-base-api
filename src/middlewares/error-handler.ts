@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import APIError from "../utils/APIError";
+import R from "../utils/Response";
 
 export default function errorHandler(
   err: Error,
@@ -8,16 +9,10 @@ export default function errorHandler(
   next: NextFunction
 ) {
   if (err instanceof APIError) {
-    return res.status(err.statusCode).json({
-      status: false,
-      message: err.message,
-    });
+    return R.error(res, err.statusCode, err.message);
   }
 
   console.log(err);
 
-  return res.status(500).json({
-    status: false,
-    message: "Please check API!",
-  });
+  return R.error(res, 500, "Please check API!");
 }

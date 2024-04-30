@@ -5,6 +5,6 @@ const hello = Router();
 
 hello.get("/", HelloController.world);
 
-hello.post("/post", HelloController.post);
+hello.post("/", HelloController.post);
 
 export default hello;
