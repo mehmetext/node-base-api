@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import APIError from "../errors/API.error";
+import APIError from "../utils/APIError";
 
 export default class HelloController {
   static async world(req: Request, res: Response) {
