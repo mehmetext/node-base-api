@@ -1,14 +1,14 @@
 import e from "express";
 import dotenv from "dotenv";
+import router from "./routers";
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 const app = e();
 
-app.get("/", (req, res) => {
-  res.json({ page: "home" });
-});
+app.use("/api/v1", router);
 
-app.listen(process.env.PORT || 4001, () => {
-  console.log("Server is running...");
+const PORT = process.env.PORT || 4001;
+app.listen(PORT, () => {
+  console.log(`Server is running at ${PORT}...`);
 });
