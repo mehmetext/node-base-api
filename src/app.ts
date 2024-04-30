@@ -1,3 +1,5 @@
+require("express-async-errors");
+
 import e from "express";
 import dotenv from "dotenv";
 import router from "./routers";
