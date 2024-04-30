@@ -1,9 +1,8 @@
 import { Router } from "express";
+import AuthController from "../controllers/auth.controller";
 
 const auth = Router();
 
-auth.get("/me", (req, res) => {
-  res.json({ page: "me" });
-});
+auth.get("/me", AuthController.me);
 
 export default auth;
