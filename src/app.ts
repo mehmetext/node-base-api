@@ -6,6 +6,7 @@ import router from "./routers";
 import errorHandler from "./middlewares/error-handler";
 import cors from "cors";
 import corsOptions from "./utils/cors-options";
+import rateLimit from "./middlewares/rate-limit";
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -15,6 +16,7 @@ const app = e();
 app.use(e.json());
 app.use(e.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
+app.use("/api", rateLimit);
 
 app.use("/api/v1", router);
 app.use(errorHandler);
