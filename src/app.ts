@@ -18,7 +18,10 @@ app.use(e.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 app.use("/api", rateLimit);
 
+//Routes
 app.use("/api/v1", router);
+
+//Middlewares
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 4001;
