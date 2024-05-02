@@ -6,6 +6,6 @@ type SchemaMiddleware = (
   res: Response,
   next: NextFunction,
   schema: Schema
-) => void;
+) => Promise<void>;
 
 export default SchemaMiddleware;
