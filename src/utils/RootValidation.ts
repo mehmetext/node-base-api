@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { ValidationError, Schema } from "joi";
-import APIError from "../../utils/APIError";
+import APIError from "./APIError";
 
 export default class RootValidation {
   static async validate(

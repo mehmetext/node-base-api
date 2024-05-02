@@ -1,6 +1,6 @@
 import Joi from "joi";
 import { Request, Response, NextFunction } from "express";
-import RootValidation from "./root.validation";
+import RootValidation from "../../utils/RootValidation";
 
 export default class HelloValidation extends RootValidation {
   static async post(req: Request, res: Response, next: NextFunction) {

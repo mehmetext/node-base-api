@@ -1,6 +1,6 @@
 import { Router } from "express";
-import HelloController from "../controllers/hello.controller";
-import HelloValidation from "../middlewares/validations/hello.validation";
+import HelloController from "./controller";
+import HelloValidation from "./validations";
 
 const hello = Router();
 

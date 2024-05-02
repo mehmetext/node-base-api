@@ -1,5 +1,5 @@
 import { Router } from "express";
-import hello from "./hello.router";
+import hello from "../app/hello/router";
 
 const router = Router();
 
