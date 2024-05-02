@@ -1,13 +1,13 @@
-import { Request, Response } from "express";
 import APIError from "../utils/APIError";
 import R from "../utils/Response";
+import Context from "../types/context";
 
 export default class HelloController {
-  static async world(req: Request, res: Response) {
+  static world: Context = (req, res) => {
     return R.success(res, { hello: "world" });
-  }
+  };
 
-  static async post(req: Request, res: Response) {
+  static post: Context = (req, res) => {
     const { name } = req.body;
 
     if (name === "err") {
@@ -15,5 +15,5 @@ export default class HelloController {
     }
 
     return R.success(res, { name });
-  }
+  };
 }

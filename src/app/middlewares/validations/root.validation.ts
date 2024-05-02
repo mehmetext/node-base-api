@@ -1,14 +1,9 @@
-import { Request, Response, NextFunction } from "express";
-import { ValidationError, Schema } from "joi";
+import { ValidationError } from "joi";
 import APIError from "../../utils/APIError";
+import SchemaMiddleware from "../../types/schema-middleware";
 
 export default class RootValidation {
-  static async validate(
-    req: Request,
-    res: Response,
-    next: NextFunction,
-    schema: Schema
-  ) {
+  static validate: SchemaMiddleware = async (req, res, next, schema) => {
     try {
       await schema.validateAsync(req.body);
       next();
@@ -17,5 +12,5 @@ export default class RootValidation {
         throw new APIError(e.message, 400);
       }
     }
-  }
+  };
 }
