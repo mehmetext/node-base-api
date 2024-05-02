@@ -2,10 +2,10 @@
   "name": "node-base-api",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/app.js",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "NODE_ENV=production node dist/app.js",
-    "dev": "NODE_ENV=local nodemon src/app.ts",
+    "start": "NODE_ENV=production node .",
+    "dev": "NODE_ENV=local nodemon src/server.ts",
     "build": "tsc -p ."
   },
   "keywords": [],
