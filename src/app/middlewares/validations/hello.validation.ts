@@ -1,5 +1,5 @@
 import Joi from "joi";
-import RootValidation from "./root.validation";
+import RootValidation from "../../../lib/RootValidation";
 import Middleware from "../../../lib/types/middleware";
 
 export default class HelloValidation extends RootValidation {

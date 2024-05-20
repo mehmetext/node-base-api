@@ -1,6 +1,6 @@
 import Context from "../../lib/types/context";
-import APIError from "../../lib/utils/APIError";
-import R from "../../lib/utils/Response";
+import APIError from "../../lib/APIError";
+import R from "../../lib/Response";
 
 export default class HelloController {
   static world: Context = (req, res) => {
