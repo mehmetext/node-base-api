@@ -8,12 +8,12 @@ export default class HelloController {
   };
 
   static post: Context = (req, res) => {
-    const { name } = req.body;
+    const { name, surname } = req.body;
 
     if (name === "err") {
       throw new APIError("An error occured :P", 400);
     }
 
-    return R.success(res, { name });
+    return R.success(res, { name, surname });
   };
 }
