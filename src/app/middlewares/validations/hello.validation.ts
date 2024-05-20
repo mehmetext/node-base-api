@@ -1,6 +1,6 @@
 import Joi from "joi";
 import RootValidation from "./root.validation";
-import Middleware from "../../types/middleware";
+import Middleware from "../../../lib/types/middleware";
 
 export default class HelloValidation extends RootValidation {
   static post: Middleware = async (req, res, next) => {

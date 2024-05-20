@@ -1,6 +1,6 @@
 import { ValidationError } from "joi";
-import APIError from "../../utils/APIError";
-import SchemaMiddleware from "../../types/schema-middleware";
+import APIError from "../../../lib/utils/APIError";
+import SchemaMiddleware from "../../../lib/types/schema-middleware";
 
 export default class RootValidation {
   static validate: SchemaMiddleware = async (req, res, next, schema) => {

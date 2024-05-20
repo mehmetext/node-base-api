@@ -1,6 +1,6 @@
-import APIError from "../utils/APIError";
-import R from "../utils/Response";
-import ErrorMiddleware from "../types/error-middleware";
+import APIError from "../../lib/utils/APIError";
+import R from "../../lib/utils/Response";
+import ErrorMiddleware from "../../lib/types/error-middleware";
 
 const errorHandler: ErrorMiddleware = (err, req, res, next) => {
   if (err instanceof APIError) {

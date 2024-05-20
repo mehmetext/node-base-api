@@ -3,7 +3,7 @@ require("express-async-errors");
 import e from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import corsOptions from "./utils/cors-options";
+import corsOptions from "../lib/utils/cors-options";
 import rateLimit from "./middlewares/rate-limit";
 import router from "./routers";
 import errorHandler from "./middlewares/error-handler";
