@@ -1,5 +1,5 @@
 import { ValidationError } from "joi";
-import APIError from "./APIError";
+import APIError from "./api-error";
 import SchemaMiddleware from "./types/schema-middleware";
 
 export default class RootValidation {

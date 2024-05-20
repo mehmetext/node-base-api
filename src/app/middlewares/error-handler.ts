@@ -1,5 +1,5 @@
-import APIError from "../../lib/APIError";
-import R from "../../lib/Response";
+import APIError from "../../lib/api-error";
+import R from "../../lib/response";
 import ErrorMiddleware from "../../lib/types/error-middleware";
 
 const errorHandler: ErrorMiddleware = (err, req, res, next) => {
